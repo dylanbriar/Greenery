@@ -3,28 +3,44 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: './src/index.js',
-  output: {
-    path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js'
+  entry: {
+    src: './src/index.js'
   },
-  plugins: [
-    new HTMLWebpackPlugin({
-      template: './src/index.html',
-    })
-  ],
+  output: {
+    filename: 'bundle.js',
+    publicPath: '/build/',
+    path: path.resolve(__dirname, 'public'),
+  },
   module: {
     rules: [
       {
-        test: /.js$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react']
         }
+      },
+      {
+        test: /\.s?css/,
+        use: [
+          'style-loader', 'css-loader', 'sass-loader'
+        ]
       }
     ]
+  },
+  plugins: [
+    new HTMLWebpackPlugin({
+      title: 'Development',
+      template: './src/index.html',
+    })
+  ],
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'public')
+    },
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
   }
-}
+};
