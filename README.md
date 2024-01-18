@@ -12,6 +12,11 @@ Money may not grow on trees, but it can grow with them. Spruce up your bank acco
 
 ### ***For Now***
 #### Get environment established
-  [ ] Watch and follow video
+  [X] Watch and follow video
 
-  [ ] Create additional baby steps as needed
+  [X] Well that didnt fucking work
+
+#### Baby steps
+  [X] render fucking anything on the page
+  [ ] render a form
+  [ ] display the number entered into the form

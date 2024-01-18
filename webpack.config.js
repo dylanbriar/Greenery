@@ -3,9 +3,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: {
-    src: './src/index.js'
-  },
+  entry: './src/index.js', 
   output: {
     filename: 'bundle.js',
     publicPath: '/build/',
@@ -14,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
@@ -28,6 +26,9 @@ module.exports = {
         ]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HTMLWebpackPlugin({

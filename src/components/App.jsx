@@ -7,8 +7,8 @@ class App extends Component {
     return (
       <div>
         <h1>Welcome to Greenery!</h1>
-        <Total />
-        <AccountBox />
+        {/* <Total />
+        <AccountBox /> */}
       </div>
     )
   }
